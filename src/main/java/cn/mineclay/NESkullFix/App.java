@@ -64,8 +64,8 @@ public class App {
             for (File l : ls) {
                 int[] scale = getXYScale(l.getName());
 
-                for (int x = scale[0]; x < scale[1]; x++) {
-                    for (int y = scale[2]; y < scale[3]; y++) {
+                for (int x = scale[0]; x <= scale[1]; x++) {
+                    for (int y = scale[2]; y <= scale[3]; y++) {
                         DataInputStream dataIn = RegionFileCache.c(worldPath, x, y);
                         if (dataIn == null) continue;
                         NBTInputStream nbtIn = new NBTInputStream(dataIn, false);
