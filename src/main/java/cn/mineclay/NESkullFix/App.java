@@ -62,7 +62,13 @@ public class App {
         File[] ls = regionPath.listFiles();
         if (ls != null) {
             for (File l : ls) {
-                int[] scale = getXYScale(l.getName());
+                int[] scale;
+                try {
+                    scale = getXYScale(l.getName());
+                } catch (Exception e) {
+                    LOGGER.severe("error processing file " + l + ": " + e.getMessage());
+                    continue;
+                }
 
                 for (int x = scale[0]; x <= scale[1]; x++) {
                     for (int y = scale[2]; y <= scale[3]; y++) {
