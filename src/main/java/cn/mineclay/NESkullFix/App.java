@@ -84,8 +84,9 @@ public class App {
 
                         boolean changed = false;
                         for (CompoundTag compoundTag : tileEntitiesListTag.getValue()) {
-                            if (!isHeadDBSkull(compoundTag)) continue;
+                            if (!isPlayerSkull(compoundTag)) continue;
                             CompoundTag ownerTag = (CompoundTag) compoundTag.getValue().get("Owner");
+                            if (ownerTag == null) continue;
                             ownerTag.getValue().put(new StringTag("Id", UUID.nameUUIDFromBytes(
                                     UUID.randomUUID().toString().getBytes()
                             ).toString()));
